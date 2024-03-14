@@ -7,7 +7,7 @@ exports.register = async (req, res) => {
   try {
     req.body.password = CryptoJS.AES.encrypt(
       password,
-      process.env.PASSWORD_SECRET_KEY
+      process.env.PW_SECRET_KEY
     )
 
     const user = await User.create(req.body)
@@ -39,7 +39,7 @@ exports.login = async (req, res) => {
 
     const decryptedPass = CryptoJS.AES.decrypt(
       user.password,
-      process.env.PASSWORD_SECRET_KEY
+      process.env.PW_SECRET_KEY
     ).toString(CryptoJS.enc.Utf8)
 
     if (decryptedPass !== password) {
