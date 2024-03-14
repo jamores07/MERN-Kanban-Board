@@ -13,6 +13,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/api/v1', (req, res) => {
+    res.json({ message: "Hello from Express"})
+})
+
 app.use('/api/v1', require('./src/v1/routes'));
 
 module.exports = app;
