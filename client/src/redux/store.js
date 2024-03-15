@@ -1,12 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit"
-import userReducer from './features/userSlice'
-import boardReducer from './features/boardSlice'
-import favouriteReducer from './features/favouriteSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import boardsSlice from "./boardsSlice";
 
-export const store = configureStore({
+
+const store = configureStore({
   reducer: {
-    user: userReducer,
-    board: boardReducer,
-    favourites: favouriteReducer
+    boards: boardsSlice.reducer,
   }
 })
+
+export default store
